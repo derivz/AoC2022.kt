@@ -1,17 +1,15 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
     val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    val gr = input.split("\n\n").map { it.split("\n").map { it.toIntOrNull() ?: 0 } }.map { it.sum() }
+
+    fun part1(gr: List<Int>): Int {
+        return gr.max()
+    }
+
+    fun part2(gr: List<Int>): Int {
+        return gr.sorted().takeLast(3).sum()
+    }
+
+    println(part1(gr))
+    println(part2(gr))
 }
